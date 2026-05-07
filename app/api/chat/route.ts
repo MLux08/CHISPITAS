@@ -76,10 +76,9 @@ export async function POST(req: Request) {
       });
     }
 
-    // Call the specific model requested by the user
-    // "gemma-4-26b-a4b-it" is respected verbatim as demanded by technical requirements.
+    // Use a widely available model for standard Gemini API key compatibility
     const response = await ai.models.generateContent({
-      model: 'gemma-4-26b-a4b-it',
+      model: 'gemini-2.5-flash',
       contents: formattedContents,
       config: {
         temperature: 0.65,

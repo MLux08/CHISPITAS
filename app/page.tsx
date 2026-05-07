@@ -100,6 +100,16 @@ const playGhost = () => {
   } catch(e) {}
 };
 
+const MARILUZ_TIPS = [
+  "No olvidéis que el pretérito imperfecto describe acciones que solían ocurrir, ¡como los paseos de Chispitas!",
+  "¡Ojo con los verbos irregulares! Si la raíz cambia al conjugarlo, como 'dormir' a 'duermo', repasad bien.",
+  "La primera conjugación termina en -ar, la segunda en -er y la tercera en -ir. ¡Muy fácil!",
+  "El modo subjuntivo expresa deseos, dudas o posibilidades. ¡Ojalá aprendáis mucho!",
+  "Los verbos defectivos no se pueden conjugar en todas las personas, como 'acanecer', 'llover' o 'soler'.",
+  "El condicional nos dice qué pasaría si se cumpliese una condición: 'Yo estudiaría si no estuviese flotando'.",
+  "Recuerda que el aspecto perfectivo indica que la acción ya ha concluido del todo."
+];
+
 export default function ChispitasApp() {
   const INITIAL_MESSAGE = "¡Hola! Soy **Chispitas**. Estaba flotando por el techo de la clase y me he enterado de que hoy toca misión especial en El Haya. ✨\n\nTe ayudaré a analizar verbos. Cada vez que aciertes ganarás Ectoplasmas de Sabiduría y subiremos de nivel.\n\nPara calentar motores: dime persona, número, tiempo, modo y tipo (regular/irregular) del verbo **cantan**.";
 
@@ -133,16 +143,6 @@ export default function ChispitasApp() {
     { id: 'grammarian', name: 'Mente Gramatical', icon: <BookOpen size={24} />, desc: '10 interacciones', unlocked: false },
     { id: 'ghost_friend', name: 'Colega Espectral', icon: <Ghost size={24} />, desc: 'Nivel 2 alcanzado', unlocked: false }
   ]);
-
-  const MARILUZ_TIPS = [
-    "No olvidéis que el pretérito imperfecto describe acciones que solían ocurrir, ¡como los paseos de Chispitas!",
-    "¡Ojo con los verbos irregulares! Si la raíz cambia al conjugarlo, como 'dormir' a 'duermo', repasad bien.",
-    "La primera conjugación termina en -ar, la segunda en -er y la tercera en -ir. ¡Muy fácil!",
-    "El modo subjuntivo expresa deseos, dudas o posibilidades. ¡Ojalá aprendáis mucho!",
-    "Los verbos defectivos no se pueden conjugar en todas las personas, como 'acanecer', 'llover' o 'soler'.",
-    "El condicional nos dice qué pasaría si se cumpliese una condición: 'Yo estudiaría si no estuviese flotando'.",
-    "Recuerda que el aspecto perfectivo indica que la acción ya ha concluido del todo."
-  ];
 
   const [currentTipIndex, setCurrentTipIndex] = useState(0);
 

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 // Requirement: API Key handling robustly against leaks.
 // We read from GOOGLE_GENAI_API_KEY as requested, and fallback to the platform default if not found.
-const apiKey = process.env.GOOGLE_GENAI_API_KEY || process.env.GEMINI_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GOOGLE_GENAI_API_KEY || process.env.GEMINI_API_KEY;
 
 // Using the mandated SDK
 const ai = new GoogleGenAI({ apiKey: apiKey as string });

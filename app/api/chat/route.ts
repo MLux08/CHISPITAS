@@ -1,13 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextResponse } from 'next/server';
 
-// Requirement: API Key handling robustly against leaks.
-// We read from GOOGLE_GENAI_API_KEY as requested, and fallback to the platform default if not found.
-const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GOOGLE_GENAI_API_KEY || process.env.GEMINI_API_KEY;
-
-// Using the mandated SDK
-const ai = new GoogleGenAI({ apiKey: apiKey as string });
-
 // Contexto inyectable. Nunca usamos "systemInstruction" según la directiva.
 const SYSTEM_PROMPT = `LENGUA. CONTEXTO Y PERSONALIDAD: Chispitas, el Fantasma de El Haya
 P - PERSONALIDAD:
@@ -50,11 +43,14 @@ E - EXCEPCIONES / EVALUACIÓN:
 - Fallos: Si analiza algo que no es un verbo, recuerda que los fantasmas de Lengua solo comen "acciones".`;
 
 export async function POST(req: Request) {
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GOOGLE_GENAI_API_KEY || process.env.GEMINI_API_KEY;
+
   if (!apiKey) {
     return NextResponse.json({ error: "API Key no configurada." }, { status: 500 });
   }
 
   try {
+    const ai = new GoogleGenAI({ apiKey: String(apiKey) });
     const { messages } = await req.json();
 
     // Map the internal Role format to the Google Gen AI format
